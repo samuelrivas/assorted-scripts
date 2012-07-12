@@ -16,8 +16,9 @@ if [ -z "$DEST" ]; then
 fi
 
 YEAR=`date +%Y`
-TEMP=/tmp/$DEST.bsdise
-cp $DEST /tmp/$DEST.bsdise
+TEMP=/tmp/`basename $DEST.bsdise`
+
+cp $DEST $TEMP
 sed -e "s/@@YEAR@@/$YEAR/g;s/@@COMM@@/%%%/g" \
     < $TEMPLATES/bsd-licence.template \
     > $DEST
