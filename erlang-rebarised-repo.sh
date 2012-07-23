@@ -21,7 +21,7 @@ fi
 # --------------------------------------------------------------------
 mkdir $DEST
 
-for i in src priv ebin include deps; do
+for i in src priv ebin include deps doc; do
     mkdir $DEST/$i;
     touch $DEST/$i/.gitignore;
 done
@@ -60,6 +60,13 @@ chmod u+x $DEST/clean-all.sh
 sed -e "s/@@APP_NAME@@/$APP_NAME/g" \
     < $TEMPLATES/erlang-app-src.template \
     > $DEST/src/$APP_NAME.app.src
+
+# --------------------------------------------------------------------
+# overview.edoc
+# --------------------------------------------------------------------
+sed -e "s/@@APP_NAME@@/$APP_NAME/g" \
+    < $TEMPLATES/erlang-overview-edoc.template \
+    > $DEST/doc/overview.edoc
 
 # --------------------------------------------------------------------
 # Git init and initial commit
