@@ -39,7 +39,11 @@ cp $TEMPLATES/rebar.config $DEST/rebar.config
 # --------------------------------------------------------------------
 # Put the last rebar there
 # --------------------------------------------------------------------
-wget https://github.com/basho/rebar/wiki/rebar -O $DEST/rebar
+REBAR_URL=https://github.com/basho/rebar/wiki/rebar
+
+echo
+echo "Downloading $REBAR_URL ..."
+wget $REBAR_URL -O $DEST/rebar -nv
 chmod u+x $DEST/rebar
 
 # --------------------------------------------------------------------
@@ -60,11 +64,12 @@ sed -e "s/@@APP_NAME@@/$APP_NAME/g" \
 # --------------------------------------------------------------------
 # Git init and initial commit
 # --------------------------------------------------------------------
+OLDPWD=$PWD
 cd $DEST
-git init
+git init --quiet
 git add .
-git commit -m "Initial commit"
-cd -
+git commit -m "Initial commit"  --quiet
+cd $OLDPWD
 
 # --------------------------------------------------------------------
 # Some remarks
