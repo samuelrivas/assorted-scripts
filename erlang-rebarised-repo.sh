@@ -65,3 +65,15 @@ git init
 git add .
 git commit -m "Initial commit"
 cd -
+
+# --------------------------------------------------------------------
+# Some remarks
+# --------------------------------------------------------------------
+echo
+echo "You have your new app in $DEST. Just remember:"
+echo "  * To edit the app.src file"
+echo "  * To edit the rebar.config if you want"
+echo "  * To substitute the rebar binary if you want"
+echo
+echo "Now go start coding"
+echo
