@@ -1,5 +1,6 @@
 *.beam
 *~
+deps
 doc/*.css
 doc/*.html
 doc/edoc-info
