@@ -29,7 +29,7 @@ done
 # --------------------------------------------------------------------
 # Create standard gitignore
 # --------------------------------------------------------------------
-cp $TEMPLATES/erlang-gitignore $DEST/.gitignore
+cp $TEMPLATES/erlang-rebarised-gitignore $DEST/.gitignore
 
 # --------------------------------------------------------------------
 # Create standard rebar.config
