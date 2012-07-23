@@ -7,6 +7,7 @@ set -e
 SCRIPT_HOME="$( cd "$( dirname "$0" )" && pwd )"
 TEMPLATES="$SCRIPT_HOME/assorted-scripts/templates"
 DEST=$1
+APP_NAME=`basename $DEST`
 
 if [ -z "$DEST" ]; then
     echo
@@ -48,6 +49,13 @@ cp $TEMPLATES/rebarised-build-and-test.sh $DEST/build-and-test.sh
 cp $TEMPLATES/git-clean-all.sh $DEST/clean-all.sh
 chmod u+x $DEST/build-and-test.sh
 chmod u+x $DEST/clean-all.sh
+
+# --------------------------------------------------------------------
+# app.src
+# --------------------------------------------------------------------
+sed -e "s/@@APP_NAME@@/$APP_NAME/g" \
+    < $TEMPLATES/erlang-app-src.template \
+    > $DEST/src/$APP_NAME.app.src
 
 # --------------------------------------------------------------------
 # Git init and initial commit
