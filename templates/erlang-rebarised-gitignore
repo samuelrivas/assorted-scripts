@@ -7,3 +7,5 @@ doc/edoc-info
 doc/erlang.png
 ebin/*.app
 src/temp
+.eunit/
+rebar/*

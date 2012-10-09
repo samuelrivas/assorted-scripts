@@ -38,22 +38,15 @@ cp $TEMPLATES/erlang-rebarised-gitignore $DEST/.gitignore
 cp $TEMPLATES/rebar.config $DEST/rebar.config
 
 # --------------------------------------------------------------------
-# Put the last rebar there
+# Create standard Makefile
 # --------------------------------------------------------------------
-REBAR_URL=https://github.com/basho/rebar/wiki/rebar
-
-echo
-echo "Downloading $REBAR_URL ..."
-wget $REBAR_URL -O $DEST/rebar -nv
-chmod u+x $DEST/rebar
+cp $TEMPLATES/erlang-rebarised-makefile $DEST/Makefile
 
 # --------------------------------------------------------------------
 # Scripts for CI systems
 # --------------------------------------------------------------------
-cp $TEMPLATES/rebarised-build-and-test.sh $DEST/build-and-test.sh
-cp $TEMPLATES/git-clean-all.sh $DEST/clean-all.sh
+cp $TEMPLATES/erlang-rebarised-build-and-test.sh $DEST/build-and-test.sh
 chmod u+x $DEST/build-and-test.sh
-chmod u+x $DEST/clean-all.sh
 
 # --------------------------------------------------------------------
 # app.src
