@@ -7,7 +7,6 @@ set -e
 SCRIPT_HOME="$( cd "$( dirname "$0" )" && pwd )"
 TEMPLATES="$SCRIPT_HOME/assorted-scripts/templates"
 DEST=$1
-APP_NAME=`basename $DEST`
 
 if [ -z "$DEST" ]; then
     echo
@@ -15,6 +14,8 @@ if [ -z "$DEST" ]; then
     echo
     exit 1
 fi
+
+APP_NAME=`basename $DEST`
 
 # --------------------------------------------------------------------
 # Create directory structure
