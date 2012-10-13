@@ -20,6 +20,9 @@
 # This scripts does not fully enforce that workflow, but does some checks to
 # avoid common mistakes:
 #
+#  * master and origin/master must be the same (arguably, we could fetch
+#    origin/master to be sure, but we want this script to be as local as
+#    possible)
 #  * The tag must be done in a branch called develop
 #  * There must not be uncommited changes in develop further than those
 #    explicitly ignored
@@ -64,6 +67,14 @@ fi
 STATUS=`git status --porcelain`
 if [ ! -z "$STATUS" ]; then
     error "There are ucommited changes, commit them before tagging";
+fi
+
+# Check that master is updated
+MASTER=`git rev-parse master`
+ORIGIN_MASTER=`git rev-parse origin/master`
+
+if [ "$MASTER" != "$ORIGIN_MASTER" ]; then
+    error "master doesn't point ot origin/master. Update before tagging"
 fi
 
 # Check that we can fast-forward master to HEAD
