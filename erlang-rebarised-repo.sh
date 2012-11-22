@@ -79,7 +79,7 @@ echo
 echo "You have your new app in $DEST. Just remember:"
 echo "  * To edit the app.src file"
 echo "  * To edit the rebar.config if you want"
-echo "  * To edit the rever version in the Makefile if you want"
+echo "  * To edit the rebar version in the Makefile if you want"
 echo
 echo "Now go start coding"
 echo
