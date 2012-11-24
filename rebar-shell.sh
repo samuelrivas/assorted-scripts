@@ -20,4 +20,4 @@ if [ -z "$DEPS" ]; then
     exit 1
 fi
 
-ERL_LIBS=$PWD/$DEPS erl -pa $PWD/ebin $@
+ERL_LIBS=$PWD/$DEPS erl -pa $PWD/ebin $PWD/test $PWD/test/ebin $@
