@@ -4,7 +4,8 @@ COMMAND=$1
 
 usage() {
     echo
-    echo "Usage $(basename $0) [turn-hdmi-off | turn-hdmi-on | turn-screen-off]"
+    echo "Usage $(basename $0) [turn-hdmi-off | turn-hdmi-on | turn-screen-off"
+    echo "                     | set-brightness <0..100> ]"
     echo
 }
 
@@ -23,4 +24,6 @@ case $COMMAND in
     turn-screen-off)
         xset dpms force off
         ;;
+    set-brightness)
+        /usr/bin/xbacklight -set $2
 esac
