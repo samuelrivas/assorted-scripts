@@ -93,7 +93,7 @@ git tag -a -u $EMAIL $VERSION
 
 # Merge master
 echo
-echo "Forwarding $MASTER_BRANCH to the $VERSION"
+echo "Forwarding $MASTER_BRANCH to $VERSION"
 
 git checkout -q $MASTER_BRANCH
 git merge -q --ff-only $VERSION
