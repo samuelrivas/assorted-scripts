@@ -5,7 +5,7 @@ COMMAND=$1
 usage() {
     echo
     echo "Usage $(basename $0) [turn-hdmi-off | turn-hdmi-on | turn-screen-off"
-    echo "                     | set-brightness <0..100> ]"
+    echo "                     | reset-dual | set-brightness <0..100> ]"
     echo
 }
 
@@ -30,6 +30,10 @@ case $COMMAND in
     turn-hdmi-on)
         setup_screen_names
         xrandr --output $HDMI --auto --right-of $LVDS
+        ;;
+    reset-dual)
+        setup_screen_names
+        xrandr  --output $LVDS --auto --output $HDMI --auto --right-of $LVDS
         ;;
     turn-screen-off)
         xset dpms force off
