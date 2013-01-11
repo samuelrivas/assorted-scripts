@@ -29,11 +29,11 @@ case $COMMAND in
         ;;
     turn-hdmi-on)
         setup_screen_names
-        xrandr --output $HDMI --auto --right-of $LVDS
+        xrandr --output $HDMI --auto --right-of $LVDS --primary
         ;;
     reset-dual)
         setup_screen_names
-        xrandr  --output $LVDS --auto --output $HDMI --auto --right-of $LVDS
+        xrandr  --output $LVDS --auto --output $HDMI --auto --right-of $LVDS --primary
         ;;
     turn-screen-off)
         xset dpms force off
