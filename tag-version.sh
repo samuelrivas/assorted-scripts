@@ -100,6 +100,6 @@ git merge -q --ff-only $VERSION
 git checkout -q $DEVELOP_BRANCH
 
 echo
-echo "Succeed!"
+echo "Success!"
 echo "Remember to push this tag to upstream"
 echo
