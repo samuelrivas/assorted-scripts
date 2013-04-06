@@ -60,7 +60,8 @@ FULL_BRANCH=$(git symbolic-ref -q HEAD)  \
 BRANCH=${FULL_BRANCH#refs/heads/}
 
 if [ $BRANCH != $DEVELOP_BRANCH ]; then
-    error "You in the $BRANCH branch. Checkout $DEVELOP_BRANCH before tagging"
+    error "You are in the $BRANCH branch. \
+           Checkout $DEVELOP_BRANCH before tagging"
 fi
 
 # Check that we are in a clean repository
