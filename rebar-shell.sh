@@ -9,7 +9,7 @@ DEPS_CANDIDATES="lib deps"
 DEPS=""
 for i in $DEPS_CANDIDATES; do
     if [ -d "$i" ]; then
-	DEPS=$i
+        DEPS=$i
     fi
 done
 
