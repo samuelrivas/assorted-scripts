@@ -2,8 +2,8 @@
 
 BASE_DIR=$PWD/`dirname $0`
 
-for i in $BASE_DIR/epstopdf $BASE_DIR/*.sh $BASE_DIR/*.rb; do
+for i in $(find $BASE_DIR -maxdepth 1 -executable -type f); do
     if [ `basename $i` != "install.sh" ]; then
-	ln -fs $i $BASE_DIR/..
+        ln -fs $i $BASE_DIR/..
     fi
 done
