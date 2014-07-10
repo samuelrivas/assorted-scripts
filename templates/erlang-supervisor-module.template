@@ -11,7 +11,7 @@
 
 %%%_* API ==============================================================
 
-%% @doc start a supervisor registered as `Name'
+%% @doc start the supervisor
 -spec start_link() -> {ok, pid()}.
 start_link() ->
   supervisor:start_link({local, ?MODULE}, ?MODULE, []).
