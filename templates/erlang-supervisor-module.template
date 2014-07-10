@@ -32,7 +32,7 @@ supervisor_spec() ->
 %% child_spec() ->
 %%   WorkerMod   = <worker_name>,
 %%   Id          = WorkerMod,
-%%   StartFunc   = {<worker_mod>, start_link, []},
+%%   StartFunc   = WorkerMod, start_link, []},
 %%   RestartType = temporary,
 %%   Shutdown    = 2000,
 %%   Type        = worker,
