@@ -41,7 +41,8 @@ delete() {
     local sha="$(git rev-parse "$long_name")"
 
     echo "Deleting $sha ($long_name)"
-    git push $remote :$branch
+    git push "$remote" :"$branch"
+    git branch -D "$branch"
 }
 
 ## Main
