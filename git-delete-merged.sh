@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+#
+# This script finds all branches that have been merged to the provided (remote)
+# branch and deletes the remote and local copy of them
+#
+# Just in case of disaster, you'll get a printout with the affected sha's, so
+# it is fairly easy to recover a branch in case you didn't really wanted to
+# delete it
 
 ## Standard prelude
 ##====================================================================
