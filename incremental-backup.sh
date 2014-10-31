@@ -89,13 +89,18 @@ backup() {
     if (( "$retention" > 0 )); then
         push_old_backups "$src_basename" "$dest_dir" "$retention"
         maybe_link="--link-dest=$dest_dir/$src_basename.1"
-    fi
 
-    rsync -avh                           \
-        --delete                         \
-        $maybe_link                      \
-        "$src_dir/"                      \
-        "$dest_dir/$src_basename.backup"
+        rsync -avh                           \
+            --delete                         \
+            "$maybe_link"                    \
+            "$src_dir/"                      \
+            "$dest_dir/$src_basename.backup"
+    else
+        rsync -avh                           \
+            --delete                         \
+            "$src_dir/"                      \
+            "$dest_dir/$src_basename.backup"
+    fi
 }
 
 ## Main
