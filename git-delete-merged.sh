@@ -19,7 +19,7 @@ readonly PROGNAME="$(basename "$0")"
 ## Functions
 ##====================================================================
 usage() {
-    echo "Usage ${PROGNAME} <branch>" >&2
+    echo "Usage ${PROGNAME} <our-remote> <upstream-branch>" >&2
 }
 
 usage_and_exit() {
@@ -28,13 +28,14 @@ usage_and_exit() {
 }
 
 get_merged() {
-    local ref="$1"
-    git branch --remotes --merged "$ref" \
-        | grep -v "$ref"                 \
-        | grep -v "master"
+    local our_remote="$1"
+    local upstream_branch="$2"
+    git branch --list "$our_remote/*" \
+        --remotes                     \
+        --merged "$upstream_branch"
 }
 
-delete() {
+delete_branch() {
     local long_name="$1"
     local remote="$(echo "$long_name" | cut -d/ -f1)"
     local branch="$(echo "$long_name" | cut -d/ -f2)"
@@ -48,13 +49,18 @@ delete() {
 ## Main
 ##====================================================================
 main() {
-    (( $NARGS == 0 )) && usage_and_exit
-    local reference="${ARGS[0]}"
-    local merged=("$(get_merged "$reference")")
-    local branch
+    (( $NARGS != 2 )) && usage_and_exit
+    local upstream_branch our_remote merged branch
+
+    our_remote="${ARGS[0]}"
+    upstream_branch="${ARGS[1]}"
+    merged=("$(get_merged "$our_remote" "$upstream_branch")")
 
     for branch in ${merged[@]}; do
-        delete "$branch"
+        if [[ ! "$branch" =~ "/master" ]]; then
+            delete_branch "$branch"
+            echo $branch
+        fi
     done
 }
 
