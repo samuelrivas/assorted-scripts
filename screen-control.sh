@@ -50,7 +50,7 @@ case $COMMAND in
         xset dpms force off
         ;;
     set-brightness)
-        /usr/bin/xbacklight -set $2
+        xbacklight -set $2
         ;;
     *)
         echo
