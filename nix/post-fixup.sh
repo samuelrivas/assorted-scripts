@@ -55,7 +55,12 @@ main() {
     echo "patching call to xset in screen-control.sh"
     fix_command_call "$out/bin/screen-control.sh" "xset" "$xset/bin/xset"
 
-    echo $PWD
+    ## This is a better way of making sure the actual scripts are reachable, the
+    ## ones on top should be ported to this mode soon
+
+    wrapProgram "$out/bin/absolute-which" \
+                --suffix-each PATH :      \
+                "$which/bin $gawk/bin"
 }
 
 main

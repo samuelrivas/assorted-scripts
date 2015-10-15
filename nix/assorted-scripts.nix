@@ -1,13 +1,22 @@
-{ stdenv, xbacklight, xrandr, xset }:
+{ stdenv,
+  gawk,
+  makeWrapper,
+  which,
+  xbacklight,
+  xrandr,
+  xset
+}:
 
 stdenv.mkDerivation rec {
   name = "assorted-scripts-dev";
 
   src = ./..;
 
-  inherit xbacklight xrandr xset;
+  inherit gawk which xbacklight xrandr xset;
 
-  buildInputs = [ ];
+  buildInputs = [
+    makeWrapper
+  ];
 
   dontBuild = true;
   dontStrip = true;
