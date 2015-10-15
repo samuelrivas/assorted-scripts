@@ -8,7 +8,7 @@
 }:
 
 stdenv.mkDerivation rec {
-  name = "assorted-scripts-dev";
+  name = "assorted-scripts-0.0.0";
 
   src = ./..;
 
