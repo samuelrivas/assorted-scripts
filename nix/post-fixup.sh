@@ -21,15 +21,11 @@ fix_templates_dir () {
         "$out/share/assorted-scripts/templates"
 }
 
-fix_command_call () {
-    local file="$1"
-    local command="$2"
-    local substitution="$3"
+wrap_calls () {
+    local program="$1"
+    local dependencies="$2"
 
-    substituteInPlace           \
-        "$file"                 \
-        --replace "$command"    \
-        "$substitution"
+    wrapProgram "$out/bin/$program" --suffix-each PATH : "$dependencies"
 }
 
 main() {
@@ -43,24 +39,9 @@ main() {
         fix_templates_dir "$out/bin/$templated_script"
     done
 
-    echo "patching call to xbacklight in screen-control.sh"
-    fix_command_call                    \
-        "$out/bin/screen-control.sh"    \
-        "/usr/bin/xbacklight"           \
-        "$xbacklight/bin/xbacklight"
-
-    echo "patching call to xrandr in screen-control.sh"
-    fix_command_call "$out/bin/screen-control.sh" "xrandr" "$xrandr/bin/xrandr"
-
-    echo "patching call to xset in screen-control.sh"
-    fix_command_call "$out/bin/screen-control.sh" "xset" "$xset/bin/xset"
-
-    ## This is a better way of making sure the actual scripts are reachable, the
-    ## ones on top should be ported to this mode soon
-
-    wrapProgram "$out/bin/absolute-which" \
-                --suffix-each PATH :      \
-                "$which/bin $gawk/bin"
+    # Many scripts need to be added here
+    wrap_calls "screen-control.sh" "$xset/bin $xbacklight/bin $xrandr/bin"
+    wrap_calls "absolute-which" "$which/bin $gawk/bin"
 }
 
 main
