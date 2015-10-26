@@ -42,6 +42,7 @@ main() {
     # Many scripts need to be added here
     wrap_calls "screen-control.sh" "$xset/bin $xbacklight/bin $xrandr/bin"
     wrap_calls "absolute-which" "$which/bin $gawk/bin"
+    wrap_calls "join-pdf.sh" "$pdftk/bin"
 }
 
 main
