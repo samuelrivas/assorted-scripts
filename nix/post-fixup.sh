@@ -43,6 +43,7 @@ main() {
     wrap_calls "screen-control.sh" "$xset/bin $xbacklight/bin $xrandr/bin"
     wrap_calls "absolute-which" "$which/bin $gawk/bin"
     wrap_calls "join-pdf.sh" "$pdftk/bin"
+    wrap_calls "pp-json.sh" "$python/bin"
 }
 
 main

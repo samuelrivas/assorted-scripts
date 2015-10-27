@@ -2,6 +2,7 @@
   gawk,
   makeWrapper,
   pdftk,
+  python,
   which,
   xbacklight,
   xrandr,
@@ -13,7 +14,7 @@ stdenv.mkDerivation rec {
 
   src = ./..;
 
-  inherit gawk pdftk which xbacklight xrandr xset;
+  inherit gawk pdftk python which xbacklight xrandr xset;
 
   buildInputs = [
     makeWrapper
