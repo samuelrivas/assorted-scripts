@@ -1,12 +1,14 @@
-{ stdenv,
+{
   gawk,
   makeWrapper,
   pdftk,
   python,
+  stdenv,
   which,
   xbacklight,
+  xclip,
   xrandr,
-  xset
+  xset,
 }:
 
 stdenv.mkDerivation rec {
@@ -14,7 +16,15 @@ stdenv.mkDerivation rec {
 
   src = ./..;
 
-  inherit gawk pdftk python which xbacklight xrandr xset;
+  inherit
+    gawk
+    pdftk
+    python
+    which
+    xbacklight
+    xclip
+    xrandr
+    xset;
 
   buildInputs = [
     makeWrapper
